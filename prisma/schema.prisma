@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Hotel {
+  id           Int     @id @default(autoincrement())
+  label        String
+  country      String
+  review       Review[]
+  picture      Picture[]  
+}
+
+model Picture {
+  id         Int    @id @default(autoincrement())
+  media      String
+  hotel     Hotel   @relation(fields: [hotelId], references: [id])
+  hotelId   Int
+
+  @@index([hotelId], name: "Picture_Hotel_FK")
+}
+
+model Review {
+  id        Int    @id @default(autoincrement())
+  review    Int
+  comment   String
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+  hotel     Hotel   @relation(fields: [hotelId], references: [id])
+  hotelId   Int
+
+  @@index([authorId], name: "Review_User_FK")  
+  @@index([hotelId], name: "Review_Hotel_FK")
+}
+
+model User {
+  id            Int             @id @default(autoincrement())
+  firstname     String
+  lastname      String
+  avatar        String
+  email         String          @unique
+  password      String
+  review        Review[]
+}
+
+
