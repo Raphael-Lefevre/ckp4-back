@@ -52,10 +52,38 @@ const prisma = require('../../src/prismaClient');
     {
       label: 'La Pirogue',
       country: 'Ile Maurice',
+      description:
+        "Embarquez pour une expérience incroyable dans un hôtel 4 étoiles et découvrez le charme authentique & inégalé de l'île Maurice.",
     },
     {
       label: 'Le Katikies',
       country: 'Santorin',
+      description:
+        "Le Katikies est perché sur les falaises d'Oia, Santorin, à 300 mètres au-dessus des eaux bleues de la mer Égée.",
+    },
+    {
+      label: 'Four Seasons Resort Bora Bora',
+      country: 'Tahiti',
+      description:
+        "Surplombant les magnifiques eaux turquoises d'une plage privée, le Four Seasons Resort Bora Bora propose de luxueux bungalows.",
+    },
+    {
+      label: 'Le LUX Saint Gilles',
+      country: 'Ile de la Reunion',
+      description:
+        "Vivez des vacances de rêve à l'hôtel LUX* Saint Gilles, le meilleur établissement de l'île de la Réunion, bordant un sublime lagon turquoise.",
+    },
+    {
+      label: 'La Piro',
+      country: 'Ile Maurice',
+      description:
+        "Embarquez pour une expérience incroyable dans un hôtel 4 étoiles et découvrez le charme authentique & inégalé de l'île Maurice.",
+    },
+    {
+      label: 'Le Katik',
+      country: 'Santorin',
+      description:
+        "Le Katikies est perché sur les falaises d'Oia, Santorin, à 300 mètres au-dessus des eaux bleues de la mer Égée.",
     },
   ];
 
@@ -64,6 +92,7 @@ const prisma = require('../../src/prismaClient');
       data: {
         label: item.label,
         country: item.country,
+        description: item.description,
       },
     });
   });
@@ -83,6 +112,26 @@ const prisma = require('../../src/prismaClient');
         'https://i.pinimg.com/originals/21/78/4d/21784d6ff3a775466b9e336ab7cda38e.jpg',
       hotelId: 2,
     },
+    {
+      media:
+        'https://i.travelapi.com/hotels/2000000/1870000/1867200/1867106/98440bc9_z.jpg',
+      hotelId: 3,
+    },
+    {
+      media:
+        'https://www.terresdecharme.com/wp-content/uploads/2017/10/lux-saint-gilles-reunion-1.jpg',
+      hotelId: 4,
+    },
+    {
+      media:
+        'https://cf.bstatic.com/images/hotel/max1024x768/242/242472111.jpg',
+      hotelId: 5,
+    },
+    {
+      media:
+        'https://i.pinimg.com/originals/21/78/4d/21784d6ff3a775466b9e336ab7cda38e.jpg',
+      hotelId: 6,
+    },
   ];
 
   const picturesSeeds = pictures.map((item) => {
@@ -100,16 +149,46 @@ const prisma = require('../../src/prismaClient');
   //   CREATE REVIEW SEEDS
   const reviews = [
     {
-      review: 5,
-      comment: 'Le paradis sur terre...',
+      review: 4.7,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue lacinia felis, sed luctus orci dapibus a. Curabitur non gravida est. Morbi efficitur nisl vel metus orci aliquam. ',
       authorId: 1,
       hotelId: 1,
     },
     {
-      review: 4,
-      comment: 'Regardez-moi cette vue',
+      review: 4.1,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue lacinia felis, sed luctus orci dapibus a. Curabitur non gravida est. Morbi efficitur nisl vel metus orci aliquam. ',
       authorId: 2,
       hotelId: 2,
+    },
+    {
+      review: 4.5,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue lacinia felis, sed luctus orci dapibus a. Curabitur non gravida est. Morbi efficitur nisl vel metus orci aliquam. ',
+      authorId: 1,
+      hotelId: 3,
+    },
+    {
+      review: 3.9,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue lacinia felis, sed luctus orci dapibus a. Curabitur non gravida est. Morbi efficitur nisl vel metus orci aliquam. ',
+      authorId: 2,
+      hotelId: 4,
+    },
+    {
+      review: 4.1,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue lacinia felis, sed luctus orci dapibus a. Curabitur non gravida est. Morbi efficitur nisl vel metus orci aliquam. ',
+      authorId: 1,
+      hotelId: 5,
+    },
+    {
+      review: 4.3,
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue lacinia felis, sed luctus orci dapibus a. Curabitur non gravida est. Morbi efficitur nisl vel metus orci aliquam. ',
+      authorId: 2,
+      hotelId: 6,
     },
   ];
 

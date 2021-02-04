@@ -22,13 +22,37 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    // Gets all users
+    const hotels = await prisma.hotel.findUnique({
+      where: {
+        id: parseInt(id, 10),
+      },
+      include: {
+        picture: true,
+        review: true,
+      },
+    });
+    // Returns a 200 'OK' HTTP code response + all infos JSON
+    return res.status(200).json(hotels);
+    // Returns a 400 'Bad Request' if any error occurs
+  } catch (error) {
+    res.status(400);
+    // Triggers the error handling middleware
+    return next(error);
+  }
+});
+
 router.post('/', async (req, res, next) => {
-  const { label, country } = req.body;
+  const { label, country, description } = req.body;
   try {
     const hotel = await prisma.hotel.create({
       data: {
         label,
         country,
+        description,
       },
     });
     return res.status(201).json(hotel);

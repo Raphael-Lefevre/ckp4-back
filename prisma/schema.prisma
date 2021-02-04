@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+
 }
 
 datasource db {
@@ -12,6 +13,7 @@ model Hotel {
   id           Int     @id @default(autoincrement())
   label        String
   country      String
+  description  String  
   review       Review[]
   picture      Picture[]  
 }
@@ -19,16 +21,16 @@ model Hotel {
 model Picture {
   id         Int    @id @default(autoincrement())
   media      String
-  hotel     Hotel   @relation(fields: [hotelId], references: [id])
-  hotelId   Int
+  hotel      Hotel   @relation(fields: [hotelId], references: [id])
+  hotelId    Int
 
   @@index([hotelId], name: "Picture_Hotel_FK")
 }
 
 model Review {
-  id        Int    @id @default(autoincrement())
-  review    Int
-  comment   String
+  id        Int     @id @default(autoincrement())
+  review    Float
+  comment   String  
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
   hotel     Hotel   @relation(fields: [hotelId], references: [id])
